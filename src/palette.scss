@@ -1,0 +1,386 @@
+@use 'sass:list';
+@use 'sass:color';
+@use 'sass:string';
+@use 'generate' as *;
+
+$--red     : #F5222D;
+$--volcano : #FA541C;
+$--orange  : #FA8C16;
+$--gold    : #FAAD14;
+$--yellow  : #FADB14;
+$--lime    : #A0D911;
+$--green   : #52C41A;
+$--cyan    : #13C2C2;
+$--blue    : #1677FF;
+$--geekblue: #2F54EB;
+$--purple  : #722ED1;
+$--magenta : #EB2F96;
+
+$red        : generate($--red);
+$red-1      : list.nth($red, 1);
+$red-2      : list.nth($red, 2);
+$red-3      : list.nth($red, 3);
+$red-4      : list.nth($red, 4);
+$red-5      : list.nth($red, 5);
+$red-6      : list.nth($red, 6);
+$red-7      : list.nth($red, 7);
+$red-8      : list.nth($red, 8);
+$red-9      : list.nth($red, 9);
+$red-10     : list.nth($red, 10);
+$red-primary: list.nth($red, 6);
+
+$red-dark        : generate($--red, ('theme': 'dark'));
+$red-dark-1      : list.nth($red-dark, 1);
+$red-dark-2      : list.nth($red-dark, 2);
+$red-dark-3      : list.nth($red-dark, 3);
+$red-dark-4      : list.nth($red-dark, 4);
+$red-dark-5      : list.nth($red-dark, 5);
+$red-dark-6      : list.nth($red-dark, 6);
+$red-dark-7      : list.nth($red-dark, 7);
+$red-dark-8      : list.nth($red-dark, 8);
+$red-dark-9      : list.nth($red-dark, 9);
+$red-dark-10     : list.nth($red-dark, 10);
+$red-dark-primary: list.nth($red-dark, 6);
+
+$volcano        : generate($--volcano);
+$volcano-1      : list.nth($volcano, 1);
+$volcano-2      : list.nth($volcano, 2);
+$volcano-3      : list.nth($volcano, 3);
+$volcano-4      : list.nth($volcano, 4);
+$volcano-5      : list.nth($volcano, 5);
+$volcano-6      : list.nth($volcano, 6);
+$volcano-7      : list.nth($volcano, 7);
+$volcano-8      : list.nth($volcano, 8);
+$volcano-9      : list.nth($volcano, 9);
+$volcano-10     : list.nth($volcano, 10);
+$volcano-primary: list.nth($volcano, 6);
+
+$volcano-dark        : generate($--volcano, ('theme': 'dark'));
+$volcano-dark-1      : list.nth($volcano-dark, 1);
+$volcano-dark-2      : list.nth($volcano-dark, 2);
+$volcano-dark-3      : list.nth($volcano-dark, 3);
+$volcano-dark-4      : list.nth($volcano-dark, 4);
+$volcano-dark-5      : list.nth($volcano-dark, 5);
+$volcano-dark-6      : list.nth($volcano-dark, 6);
+$volcano-dark-7      : list.nth($volcano-dark, 7);
+$volcano-dark-8      : list.nth($volcano-dark, 8);
+$volcano-dark-9      : list.nth($volcano-dark, 9);
+$volcano-dark-10     : list.nth($volcano-dark, 10);
+$volcano-dark-primary: list.nth($volcano-dark, 6);
+
+$orange        : generate($--orange);
+$orange-1      : list.nth($orange, 1);
+$orange-2      : list.nth($orange, 2);
+$orange-3      : list.nth($orange, 3);
+$orange-4      : list.nth($orange, 4);
+$orange-5      : list.nth($orange, 5);
+$orange-6      : list.nth($orange, 6);
+$orange-7      : list.nth($orange, 7);
+$orange-8      : list.nth($orange, 8);
+$orange-9      : list.nth($orange, 9);
+$orange-10     : list.nth($orange, 10);
+$orange-primary: list.nth($orange, 6);
+
+$orange-dark        : generate($--orange, ('theme': 'dark'));
+$orange-dark-1      : list.nth($orange-dark, 1);
+$orange-dark-2      : list.nth($orange-dark, 2);
+$orange-dark-3      : list.nth($orange-dark, 3);
+$orange-dark-4      : list.nth($orange-dark, 4);
+$orange-dark-5      : list.nth($orange-dark, 5);
+$orange-dark-6      : list.nth($orange-dark, 6);
+$orange-dark-7      : list.nth($orange-dark, 7);
+$orange-dark-8      : list.nth($orange-dark, 8);
+$orange-dark-9      : list.nth($orange-dark, 9);
+$orange-dark-10     : list.nth($orange-dark, 10);
+$orange-dark-primary: list.nth($orange-dark, 6);
+
+$gold        : generate($--gold);
+$gold-1      : list.nth($gold, 1);
+$gold-2      : list.nth($gold, 2);
+$gold-3      : list.nth($gold, 3);
+$gold-4      : list.nth($gold, 4);
+$gold-5      : list.nth($gold, 5);
+$gold-6      : list.nth($gold, 6);
+$gold-7      : list.nth($gold, 7);
+$gold-8      : list.nth($gold, 8);
+$gold-9      : list.nth($gold, 9);
+$gold-10     : list.nth($gold, 10);
+$gold-primary: list.nth($gold, 6);
+
+$gold-dark        : generate($--gold, ('theme': 'dark'));
+$gold-dark-1      : list.nth($gold-dark, 1);
+$gold-dark-2      : list.nth($gold-dark, 2);
+$gold-dark-3      : list.nth($gold-dark, 3);
+$gold-dark-4      : list.nth($gold-dark, 4);
+$gold-dark-5      : list.nth($gold-dark, 5);
+$gold-dark-6      : list.nth($gold-dark, 6);
+$gold-dark-7      : list.nth($gold-dark, 7);
+$gold-dark-8      : list.nth($gold-dark, 8);
+$gold-dark-9      : list.nth($gold-dark, 9);
+$gold-dark-10     : list.nth($gold-dark, 10);
+$gold-dark-primary: list.nth($gold-dark, 6);
+
+$yellow        : generate($--yellow);
+$yellow-1      : list.nth($yellow, 1);
+$yellow-2      : list.nth($yellow, 2);
+$yellow-3      : list.nth($yellow, 3);
+$yellow-4      : list.nth($yellow, 4);
+$yellow-5      : list.nth($yellow, 5);
+$yellow-6      : list.nth($yellow, 6);
+$yellow-7      : list.nth($yellow, 7);
+$yellow-8      : list.nth($yellow, 8);
+$yellow-9      : list.nth($yellow, 9);
+$yellow-10     : list.nth($yellow, 10);
+$yellow-primary: list.nth($yellow, 6);
+
+$yellow-dark        : generate($--yellow, ('theme': 'dark'));
+$yellow-dark-1      : list.nth($yellow-dark, 1);
+$yellow-dark-2      : list.nth($yellow-dark, 2);
+$yellow-dark-3      : list.nth($yellow-dark, 3);
+$yellow-dark-4      : list.nth($yellow-dark, 4);
+$yellow-dark-5      : list.nth($yellow-dark, 5);
+$yellow-dark-6      : list.nth($yellow-dark, 6);
+$yellow-dark-7      : list.nth($yellow-dark, 7);
+$yellow-dark-8      : list.nth($yellow-dark, 8);
+$yellow-dark-9      : list.nth($yellow-dark, 9);
+$yellow-dark-10     : list.nth($yellow-dark, 10);
+$yellow-dark-primary: list.nth($yellow-dark, 6);
+
+$lime        : generate($--lime);
+$lime-1      : list.nth($lime, 1);
+$lime-2      : list.nth($lime, 2);
+$lime-3      : list.nth($lime, 3);
+$lime-4      : list.nth($lime, 4);
+$lime-5      : list.nth($lime, 5);
+$lime-6      : list.nth($lime, 6);
+$lime-7      : list.nth($lime, 7);
+$lime-8      : list.nth($lime, 8);
+$lime-9      : list.nth($lime, 9);
+$lime-10     : list.nth($lime, 10);
+$lime-primary: list.nth($lime, 6);
+
+$lime-dark        : generate($--lime, ('theme': 'dark'));
+$lime-dark-1      : list.nth($lime-dark, 1);
+$lime-dark-2      : list.nth($lime-dark, 2);
+$lime-dark-3      : list.nth($lime-dark, 3);
+$lime-dark-4      : list.nth($lime-dark, 4);
+$lime-dark-5      : list.nth($lime-dark, 5);
+$lime-dark-6      : list.nth($lime-dark, 6);
+$lime-dark-7      : list.nth($lime-dark, 7);
+$lime-dark-8      : list.nth($lime-dark, 8);
+$lime-dark-9      : list.nth($lime-dark, 9);
+$lime-dark-10     : list.nth($lime-dark, 10);
+$lime-dark-primary: list.nth($lime-dark, 6);
+
+$green        : generate($--green);
+$green-1      : list.nth($green, 1);
+$green-2      : list.nth($green, 2);
+$green-3      : list.nth($green, 3);
+$green-4      : list.nth($green, 4);
+$green-5      : list.nth($green, 5);
+$green-6      : list.nth($green, 6);
+$green-7      : list.nth($green, 7);
+$green-8      : list.nth($green, 8);
+$green-9      : list.nth($green, 9);
+$green-10     : list.nth($green, 10);
+$green-primary: list.nth($green, 6);
+
+$green-dark        : generate($--green, ('theme': 'dark'));
+$green-dark-1      : list.nth($green-dark, 1);
+$green-dark-2      : list.nth($green-dark, 2);
+$green-dark-3      : list.nth($green-dark, 3);
+$green-dark-4      : list.nth($green-dark, 4);
+$green-dark-5      : list.nth($green-dark, 5);
+$green-dark-6      : list.nth($green-dark, 6);
+$green-dark-7      : list.nth($green-dark, 7);
+$green-dark-8      : list.nth($green-dark, 8);
+$green-dark-9      : list.nth($green-dark, 9);
+$green-dark-10     : list.nth($green-dark, 10);
+$green-dark-primary: list.nth($green-dark, 6);
+
+$cyan        : generate($--cyan);
+$cyan-1      : list.nth($cyan, 1);
+$cyan-2      : list.nth($cyan, 2);
+$cyan-3      : list.nth($cyan, 3);
+$cyan-4      : list.nth($cyan, 4);
+$cyan-5      : list.nth($cyan, 5);
+$cyan-6      : list.nth($cyan, 6);
+$cyan-7      : list.nth($cyan, 7);
+$cyan-8      : list.nth($cyan, 8);
+$cyan-9      : list.nth($cyan, 9);
+$cyan-10     : list.nth($cyan, 10);
+$cyan-primary: list.nth($cyan, 6);
+
+$cyan-dark        : generate($--cyan, ('theme': 'dark'));
+$cyan-dark-1      : list.nth($cyan-dark, 1);
+$cyan-dark-2      : list.nth($cyan-dark, 2);
+$cyan-dark-3      : list.nth($cyan-dark, 3);
+$cyan-dark-4      : list.nth($cyan-dark, 4);
+$cyan-dark-5      : list.nth($cyan-dark, 5);
+$cyan-dark-6      : list.nth($cyan-dark, 6);
+$cyan-dark-7      : list.nth($cyan-dark, 7);
+$cyan-dark-8      : list.nth($cyan-dark, 8);
+$cyan-dark-9      : list.nth($cyan-dark, 9);
+$cyan-dark-10     : list.nth($cyan-dark, 10);
+$cyan-dark-primary: list.nth($cyan-dark, 6);
+
+$blue        : generate($--blue);
+$blue-1      : list.nth($blue, 1);
+$blue-2      : list.nth($blue, 2);
+$blue-3      : list.nth($blue, 3);
+$blue-4      : list.nth($blue, 4);
+$blue-5      : list.nth($blue, 5);
+$blue-6      : list.nth($blue, 6);
+$blue-7      : list.nth($blue, 7);
+$blue-8      : list.nth($blue, 8);
+$blue-9      : list.nth($blue, 9);
+$blue-10     : list.nth($blue, 10);
+$blue-primary: list.nth($blue, 6);
+
+$blue-dark        : generate($--blue, ('theme': 'dark'));
+$blue-dark-1      : list.nth($blue-dark, 1);
+$blue-dark-2      : list.nth($blue-dark, 2);
+$blue-dark-3      : list.nth($blue-dark, 3);
+$blue-dark-4      : list.nth($blue-dark, 4);
+$blue-dark-5      : list.nth($blue-dark, 5);
+$blue-dark-6      : list.nth($blue-dark, 6);
+$blue-dark-7      : list.nth($blue-dark, 7);
+$blue-dark-8      : list.nth($blue-dark, 8);
+$blue-dark-9      : list.nth($blue-dark, 9);
+$blue-dark-10     : list.nth($blue-dark, 10);
+$blue-dark-primary: list.nth($blue-dark, 6);
+
+$geekblue   : generate($--geekblue);
+$geekblue-1 : list.nth($geekblue, 1);
+$geekblue-2 : list.nth($geekblue, 2);
+$geekblue-3 : list.nth($geekblue, 3);
+$geekblue-4 : list.nth($geekblue, 4);
+$geekblue-5 : list.nth($geekblue, 5);
+$geekblue-6 : list.nth($geekblue, 6);
+$geekblue-7 : list.nth($geekblue, 7);
+$geekblue-8 : list.nth($geekblue, 8);
+$geekblue-9 : list.nth($geekblue, 9);
+$geekblue-10: list.nth($geekblue, 10);
+$geekblue-primary: list.nth($geekblue, 6);
+
+$geekblue-dark        : generate($--geekblue, ('theme': 'dark'));
+$geekblue-dark-1      : list.nth($geekblue-dark, 1);
+$geekblue-dark-2      : list.nth($geekblue-dark, 2);
+$geekblue-dark-3      : list.nth($geekblue-dark, 3);
+$geekblue-dark-4      : list.nth($geekblue-dark, 4);
+$geekblue-dark-5      : list.nth($geekblue-dark, 5);
+$geekblue-dark-6      : list.nth($geekblue-dark, 6);
+$geekblue-dark-7      : list.nth($geekblue-dark, 7);
+$geekblue-dark-8      : list.nth($geekblue-dark, 8);
+$geekblue-dark-9      : list.nth($geekblue-dark, 9);
+$geekblue-dark-10     : list.nth($geekblue-dark, 10);
+$geekblue-dark-primary: list.nth($geekblue-dark, 6);
+
+$purple   : generate($--purple);
+$purple-1 : list.nth($purple, 1);
+$purple-2 : list.nth($purple, 2);
+$purple-3 : list.nth($purple, 3);
+$purple-4 : list.nth($purple, 4);
+$purple-5 : list.nth($purple, 5);
+$purple-6 : list.nth($purple, 6);
+$purple-7 : list.nth($purple, 7);
+$purple-8 : list.nth($purple, 8);
+$purple-9 : list.nth($purple, 9);
+$purple-10: list.nth($purple, 10);
+$purple-primary: list.nth($purple, 6);
+
+$purple-dark        : generate($--purple, ('theme': 'dark'));
+$purple-dark-1      : list.nth($purple-dark, 1);
+$purple-dark-2      : list.nth($purple-dark, 2);
+$purple-dark-3      : list.nth($purple-dark, 3);
+$purple-dark-4      : list.nth($purple-dark, 4);
+$purple-dark-5      : list.nth($purple-dark, 5);
+$purple-dark-6      : list.nth($purple-dark, 6);
+$purple-dark-7      : list.nth($purple-dark, 7);
+$purple-dark-8      : list.nth($purple-dark, 8);
+$purple-dark-9      : list.nth($purple-dark, 9);
+$purple-dark-10     : list.nth($purple-dark, 10);
+$purple-dark-primary: list.nth($purple-dark, 6);
+
+$magenta        : generate($--magenta);
+$magenta-1      : list.nth($magenta, 1);
+$magenta-2      : list.nth($magenta, 2);
+$magenta-3      : list.nth($magenta, 3);
+$magenta-4      : list.nth($magenta, 4);
+$magenta-5      : list.nth($magenta, 5);
+$magenta-6      : list.nth($magenta, 6);
+$magenta-7      : list.nth($magenta, 7);
+$magenta-8      : list.nth($magenta, 8);
+$magenta-9      : list.nth($magenta, 9);
+$magenta-10     : list.nth($magenta, 10);
+$magenta-primary: list.nth($magenta, 6);
+
+$magenta-dark        : generate($--magenta, ('theme': 'dark'));
+$magenta-dark-1      : list.nth($magenta-dark, 1);
+$magenta-dark-2      : list.nth($magenta-dark, 2);
+$magenta-dark-3      : list.nth($magenta-dark, 3);
+$magenta-dark-4      : list.nth($magenta-dark, 4);
+$magenta-dark-5      : list.nth($magenta-dark, 5);
+$magenta-dark-6      : list.nth($magenta-dark, 6);
+$magenta-dark-7      : list.nth($magenta-dark, 7);
+$magenta-dark-8      : list.nth($magenta-dark, 8);
+$magenta-dark-9      : list.nth($magenta-dark, 9);
+$magenta-dark-10     : list.nth($magenta-dark, 10);
+$magenta-dark-primary: list.nth($magenta-dark, 6);
+
+@function --gray() {
+  $result: list.join((), (), 'comma', true);
+  $gray-scale-gradient: [100, 98, 96, 94, 85, 75, 55, 35, 26.3, 15, 12, 8, 0];
+  @each $i in $gray-scale-gradient {
+    $color: color.scale(#000000, $lightness: $i * 1%);
+    $result: list.append($result, string.unquote('\##{string.slice(color.ie-hex-str($color), 4)}'));
+  }
+  @return $result;
+}
+
+$gray: --gray();
+$gray-1 : list.nth($gray, 1);
+$gray-2 : list.nth($gray, 2);
+$gray-3 : list.nth($gray, 3);
+$gray-4 : list.nth($gray, 4);
+$gray-5 : list.nth($gray, 5);
+$gray-6 : list.nth($gray, 6);
+$gray-7 : list.nth($gray, 7);
+$gray-8 : list.nth($gray, 8);
+$gray-9 : list.nth($gray, 9);
+$gray-10: list.nth($gray, 10);
+$gray-11: list.nth($gray, 11);
+$gray-12: list.nth($gray, 12);
+$gray-13: list.nth($gray, 13);
+
+$palette: (
+  'red'     : $red,
+  'volcano' : $volcano,
+  'orange'  : $orange,
+  'gold'    : $gold,
+  'yellow'  : $yellow,
+  'lime'    : $lime,
+  'green'   : $green,
+  'cyan'    : $cyan,
+  'blue'    : $blue,
+  'geekblue': $geekblue,
+  'purple'  : $purple,
+  'magenta' : $magenta,
+  'gray'    : $gray
+);
+
+$palette-dark: (
+  'red'     : $red-dark,
+  'volcano' : $volcano-dark,
+  'orange'  : $orange-dark,
+  'gold'    : $gold-dark,
+  'yellow'  : $yellow-dark,
+  'lime'    : $lime-dark,
+  'green'   : $green-dark,
+  'cyan'    : $cyan-dark,
+  'blue'    : $blue-dark,
+  'geekblue': $geekblue-dark,
+  'purple'  : $purple-dark,
+  'magenta' : $magenta-dark,
+  'gray'    : $gray
+);

@@ -1,0 +1,34 @@
+{
+  "name": "ant-design-colors-scss",
+  "description": "SASS/SCSS implementation of Ant Design Colors",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": {
+    "name": "13OnTheCode",
+    "email": "13@ryongyon.com",
+    "url": "https://ryongyon.com"
+  },
+  "homepage": "https://github.com/13OnTheCode/ant-design-colors-scss#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/13OnTheCode/ant-design-colors-scss.git"
+  },
+  "bugs": {
+    "url": "https://github.com/13OnTheCode/ant-design-colors-scss/issues"
+  },
+  "keywords": [
+    "css",
+    "sass",
+    "scss",
+    "ant-design-colors"
+  ],
+  "files": [
+    "/LICENSE.md",
+    "/CHANGELOG.md",
+    "/README.md",
+    "/README.CN.md",
+    "/*.s{a,c}ss",
+    "/src/**/*.s{a,c}ss"
+  ],
+  "main": "index.sass"
+}

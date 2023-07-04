@@ -1,0 +1,179 @@
+@use 'sass:map';
+@use 'sass:math';
+@use 'sass:meta';
+@use 'sass:list';
+@use 'sass:color';
+@use 'sass:string';
+
+$--hue-step: 2;
+$--saturation-step-1: 0.16;
+$--saturation-step-2: 0.05;
+$--brightness-step-1: 0.05;
+$--brightness-step-2: 0.15;
+$--light-color-count: 5;
+$--dark-color-count: 4;
+$--dark-theme-rule: (
+  1: ( index: 8, opacity: 0.15 ),
+  2: ( index: 7, opacity: 0.25 ),
+  3: ( index: 6, opacity: 0.3 ),
+  4: ( index: 6, opacity: 0.45 ),
+  5: ( index: 6, opacity: 0.65 ),
+  6: ( index: 6, opacity: 0.85 ),
+  7: ( index: 5, opacity: 0.9 ),
+  8: ( index: 4, opacity: 0.95 ),
+  9: ( index: 3, opacity: 0.97 ),
+  10: ( index: 2, opacity: 0.98 )
+);
+
+@function --number-to-fixed($number, $digits) {
+  $pow: math.pow(10, $digits);
+  $rounded: math.round($number * $pow);
+  @return math.div($rounded, $pow);
+}
+
+@function --color-to-hsv($color) {
+  $r: color.red($color);
+  $g: color.green($color);
+  $b: color.blue($color);
+  $max: math.max($r, $g, $b);
+  $min: math.min($r, $g, $b);
+  $diff: $max - $min;
+  $h: 0;
+  @if $max == $min {
+    $h: 0
+  } @else if $max == $r {
+    $h: math.div(60 * ($g - $b), $diff) + if($g >= $b, 0, 360);
+  } @else if $max == $g {
+    $h: math.div(60 * ($b - $r), $diff) + 120;
+  } @else if $max == $b {
+    $h: math.div(60 * ($r - $g), $diff) + 240;
+  }
+  $s: if($max == 0, 0, math.div($diff, $max));
+  $v: math.div($max, 255);
+  @return [$h, $s, $v];
+}
+
+@function --color-to-hex($color) {
+  $ie-hex-str: color.ie-hex-str($color);
+  @return string.unquote('\##{string.slice($ie-hex-str, 4)}');
+}
+
+@function --color-to-rgb($color) {
+  $r: color.red($color);
+  $g: color.green($color);
+  $b: color.blue($color);
+  @return rgb($r, $g, $b);
+}
+
+@function --color-mix($color1, $color2, $amount) {
+  $r: (color.red($color2)   - color.red($color1))   * $amount + color.red($color1);
+  $g: (color.green($color2) - color.green($color1)) * $amount + color.green($color1);
+  $b: (color.blue($color2)  - color.blue($color1))  * $amount + color.blue($color1);
+  @return rgb($r, $g, $b);
+}
+
+@function --hsv-to-rgb($hsv) {
+  $h: list.nth($hsv, 1);
+  $s: list.nth($hsv, 2);
+  $v: list.nth($hsv, 3);
+  $th: math.floor(math.div($h, 60));
+  $t1: math.div($h, 60) - $th;
+  $t2: $v * (1 - $s);
+  $t3: $v * (1 - $t1 * $s);
+  $t4: $v * (1 - (1 - $t1) * $s);
+  $i: $th + 1;
+  $r: list.nth([$v, $t3, $t2, $t2, $t4, $v], $i);
+  $g: list.nth([$t4, $v, $v, $t3, $t2, $t2], $i);
+  $b: list.nth([$t2, $t2, $t4, $v, $v, $t3], $i);
+  @return rgb($r * 255, $g * 255, $b * 255);
+}
+
+@function --handle-hsv($hsv, $index, $lighten) {
+  $h: list.nth($hsv, 1);
+  $s: list.nth($hsv, 2);
+  $v: list.nth($hsv, 3);
+  // 处理 hue
+  $hue: null;
+  @if $h >= 60 and $h <= 240 {
+    $hue: if($lighten, $h - $--hue-step * $index, $h + $--hue-step * $index);
+  } @else {
+    $hue: if($lighten, $h + $--hue-step * $index, $h - $--hue-step * $index);
+  }
+  $hue: math.round(($hue + 360) % 360);
+  // 处理 saturation
+  $saturation: null;
+  @if $h == 0 and $s == 0 {
+    $saturation: 0;
+  } @else {
+    @if $lighten {
+      $saturation: $s - $--saturation-step-1 * $index;
+    } @else if $index == $--dark-color-count {
+      $saturation: $s + $--saturation-step-1;
+    } @else {
+      $saturation: $s + $--saturation-step-2 * $index;
+    }
+    $saturation: math.min($saturation, 1);
+    @if $lighten and $index == $--light-color-count and $saturation > 0.1 {
+      $saturation: 0.1;
+    }
+    $saturation: math.max($saturation, 0.06);
+    $saturation: --number-to-fixed($saturation, 2);
+  }
+  // 处理 value
+  $value: null;
+  @if $lighten {
+    $value: $v + $--brightness-step-1 * $index;
+  } @else {
+    $value: $v - $--brightness-step-2 * $index;
+  }
+  $value: math.min($value, 1);
+  $value: --number-to-fixed($value, 2);
+  // 返回结果
+  @return [$hue, $saturation, $value];
+}
+
+@function --light-theme($color) {
+  $hsv: --color-to-hsv($color);
+  $result: list.join((), (), 'comma', true);
+  @for $index from 1 through $--light-color-count {
+    $result: list.append($result, --hsv-to-rgb(--handle-hsv($hsv, $--light-color-count + 1 - $index, true)));
+  }
+  $result: list.append($result, --color-to-rgb($color));
+  @for $index from $--dark-color-count through 1 {
+    $result: list.append($result, --hsv-to-rgb(--handle-hsv($hsv, $--dark-color-count + 1 - $index, false)));
+  }
+  @return $result;
+}
+
+@function --dark-theme($theme, $background-color) {
+  $result: list.join((), (), 'comma', true);
+  @for $index from 1 through list.length($theme) {
+    $dark-rule-index: map.get($--dark-theme-rule, $index, 'index');
+    $dark-rule-opacity: map.get($--dark-theme-rule, $index, 'opacity');
+    $result: list.append($result, --color-mix(
+        $background-color,
+        list.nth($theme, $dark-rule-index),
+        $dark-rule-opacity
+    ));
+  }
+  @return $result;
+}
+
+@function generate($color, $options: null) {
+  @if meta.type-of($color) != 'color' {
+    @error string.unquote('$color must be: color; but received type is #{meta.type-of($color)} with a value of #{meta.inspect($color)}');
+  }
+  @if meta.type-of($options) != 'map' and meta.type-of($options) != 'null' {
+    @error string.unquote('$options must be: map or null; but received type is #{meta.type-of($options)} with a value of #{meta.inspect($options)}');
+  }
+  $result: --light-theme($color);
+  @if meta.type-of($options) == 'map' {
+    @if map.has-key($options, 'theme') and map.get($options, 'theme') == 'dark' {
+      $result: --dark-theme($result, if(map.has-key($options, 'backgroundColor'), map.get($options, 'backgroundColor'), #141414));
+    }
+  }
+  @for $index from 1 through list.length($result) {
+    $result: list.set-nth($result, $index, --color-to-hex(list.nth($result, $index)));
+  }
+  @return $result;
+}
