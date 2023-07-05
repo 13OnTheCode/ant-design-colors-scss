@@ -1,7 +1,7 @@
 {
   "name": "ant-design-colors-scss",
   "description": "SASS/SCSS implementation of Ant Design Colors",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "author": {
     "name": "13OnTheCode",
